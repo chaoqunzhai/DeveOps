@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)tool -->
+<html lang="zh-CN" class="no-js"><!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    {% load static %}
+    {% include "base/utils_css.html" %}
+
+    <link rel="stylesheet" href="{% static "working/css/apps.css" %}" charset="UTF-8">
+    <style type="text/css">
+
+
+        [uib-typeahead-popup].dropdown-menu {
+            display: block;
+        }
+
+        html {
+            overflow: scroll !important;
+        }
+
+    </style>
+    <style type="text/css">.uib-time input {
+        width: 50px;
+    }</style>
+    <style type="text/css">[uib-tooltip-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-html-popup].tooltip.right-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.top-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-left > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.bottom-right > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.left-bottom > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-top > .tooltip-arrow, [uib-tooltip-template-popup].tooltip.right-bottom > .tooltip-arrow, [uib-popover-popup].popover.top-left > .arrow, [uib-popover-popup].popover.top-right > .arrow, [uib-popover-popup].popover.bottom-left > .arrow, [uib-popover-popup].popover.bottom-right > .arrow, [uib-popover-popup].popover.left-top > .arrow, [uib-popover-popup].popover.left-bottom > .arrow, [uib-popover-popup].popover.right-top > .arrow, [uib-popover-popup].popover.right-bottom > .arrow, [uib-popover-html-popup].popover.top-left > .arrow, [uib-popover-html-popup].popover.top-right > .arrow, [uib-popover-html-popup].popover.bottom-left > .arrow, [uib-popover-html-popup].popover.bottom-right > .arrow, [uib-popover-html-popup].popover.left-top > .arrow, [uib-popover-html-popup].popover.left-bottom > .arrow, [uib-popover-html-popup].popover.right-top > .arrow, [uib-popover-html-popup].popover.right-bottom > .arrow, [uib-popover-template-popup].popover.top-left > .arrow, [uib-popover-template-popup].popover.top-right > .arrow, [uib-popover-template-popup].popover.bottom-left > .arrow, [uib-popover-template-popup].popover.bottom-right > .arrow, [uib-popover-template-popup].popover.left-top > .arrow, [uib-popover-template-popup].popover.left-bottom > .arrow, [uib-popover-template-popup].popover.right-top > .arrow, [uib-popover-template-popup].popover.right-bottom > .arrow {
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0;
+    }
+
+    [uib-popover-popup].popover, [uib-popover-html-popup].popover, [uib-popover-template-popup].popover {
+        display: block !important;
+    }</style>
+    <style type="text/css">.uib-datepicker-popup.dropdown-menu {
+        display: block;
+        float: none;
+        margin: 0;
+    }
+
+    .uib-button-bar {
+        padding: 10px 9px 2px;
+    }</style>
+    <style type="text/css">.uib-position-measure {
+        display: block !important;
+        visibility: hidden !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+    }
+
+    .uib-position-scrollbar-measure {
+        position: absolute !important;
+        top: -9999px !important;
+        width: 50px !important;
+        height: 50px !important;
+        overflow: scroll !important;
+    }
+
+    .uib-position-body-scrollbar-measure {
+        overflow: scroll !important;
+    }
+    </style>
+    <style type="text/css">.uib-datepicker .uib-title {
+        width: 100%;
+    }
+
+    .uib-day button, .uib-month button, .uib-year button {
+        min-width: 100%;
+    }
+
+    .uib-left, .uib-right {
+        width: 100%
+    }</style>
+    <style type="text/css">.ng-animate.item:not(.left):not(.right) {
+        -webkit-transition: 0s ease-in-out left;
+        transition: 0s ease-in-out left
+    }</style>
+    <style type="text/css">
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide:not(.ng-hide-animate) {
+            display: none !important;
+        }
+
+        ng\:form {
+            display: block;
+        }
+
+        .ng-animate-shim {
+            visibility: hidden;
+        }
+
+        .ng-anchor {
+            position: absolute;
+        }
+
+
+    </style>
+    <style>
+
+        .am-icon-site {
+            display: block;
+            position: relative;
+            width: 52px;
+            height: 60px;
+            padding: 16px 0;
+            border-radius: 20%;
+            font-size: 28px;
+            line-height: 1;
+            text-align: center;
+            color: #fff;
+            margin: 3px auto
+        }
+
+        .am-icon-site :before {
+
+            text-align: center
+        }
+
+    </style>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Workings</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+
+</head>
+
+<body style="overflow-y: scroll" class="ng-scope">
+
+
+<div class="main ng-scope">
+
+
+    <div class="content-inner">
+
+        <div class="content-body ng-scope">
+            <div class="page-title-container ng-scope">
+                <h3 class="page-title">
+                    作业平台
+                </h3>
+                <div class="page-btns">
+                    <!-- ngIf: ::permissionOfCreate --><a class="btn btn-page-title ng-scope" ui-sref="tools.create"
+                                                          ng-if="::permissionOfCreate" href="tool/create">
+                    <i class="fa fa-plus"></i> 新建工具
+                </a>
+
+                    <a class="btn btn-page-title" href="tool/store">
+                        <i class="fa fa-shopping-bag"></i> 工具商店
+                    </a>
+
+                    <a class="btn btn-page-title"
+                       href="tasks?system=tool">
+                        <i class="fa fa-history"></i> 查看历史任务
+                    </a>
+                </div>
+            </div>
+
+            <div class="content-panel ng-scope">
+                <div class="clearfix" style="margin-bottom:-15px">
+                    <div class="input-with-search pull-left margin-bottom margin-right">
+                        <input type="search" class="form-control ng-pristine ng-untouched ng-valid ng-empty"
+                               ng-model="filters.q" ng-model-options="{debounce:200}" ng-change="filtersChange()"
+                               placeholder="根据工具名称过滤">
+                    </div>
+
+                    <div class="clearfix pull-left margin-bottom ng-scope" ng-if="::labelList.length &gt; 1">
+                        <!-- ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                  ng-click="setLabel(label)"
+                                                                  class="label label-tools pull-left ng-binding ng-scope"
+                                                                  ng-class="{active: filters.label === label}">
+                        AutoDiscover
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        AWS
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        CMDB自动发现
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        CPU故障自愈
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        DB
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        DEMO
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        EASYOPS接口
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        JerryXie
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        mongodb操作
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        ORACLE
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        Shadow
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        test
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        test111
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        VMware Tools
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        weblogic
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        Windows常用命令
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        zach
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        基础工具
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        工具
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        常用命令
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        打包上传
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        持续发布
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        推荐工具
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        故障排查
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        故障自愈
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        数据库管理
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        有用的脚本在这里
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        构建工具
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        查询
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        泰久
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        流程平台
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        珍爱网
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        系统管理
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        网络管理
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        运营销售
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        部署
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        部署前检查
+                    </a><!-- end ngRepeat: label in ::labelList --><a href="" ng-repeat="label in ::labelList"
+                                                                      ng-click="setLabel(label)"
+                                                                      class="label label-tools pull-left ng-binding ng-scope"
+                                                                      ng-class="{active: filters.label === label}">
+                        默认
+                    </a><!-- end ngRepeat: label in ::labelList -->
+                    </div><!-- end ngIf: ::labelList.length > 1 -->
+                    <!-- <div class="pull-left margin-left" style="line-height: 32px">
+        <a ui-sref="tools.store">获取更多工具</a>
+    </div> -->
+                </div>
+
+                <div class="tool-group ng-scope" ng-repeat="group in toolListGroup">
+                    <h5 class="tool-group-name ng-binding">AutoDiscover</h5>
+                    <div class="tool-list">
+                        <div class="tool-list-inner">
+                            <!-- ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/6b3c6ebf0f5bb6275ac6640cbdbae435">
+                                    <div class="am-icon-btn am-success am-icon-site" ng-class="::row.style">
+                                        <i  class="ng-isolate-scope fa fa-bank"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">激活网段所有IP</div>
+                                </a>
+                            </div><!-- end ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/e805d1e081676814fed4054bbe07ab6a">
+                                    <div class="am-icon-btn am-warning am-icon-site"  ng-class="::row.style">
+                                        <i  class="ng-isolate-scope fa fa-wrench"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">采集主机与交换机端口连接关系</div>
+                                </a>
+                            </div><!-- end ngRepeat: row in ::group.list -->
+
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/b11d41bc1fa599627d5e2188a08f7396">
+                                    <div class="am-icon-btn success  am-icon-site" ng-class="::row.style">
+                                        <i  class="ng-isolate-scope fa fa-bank"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">采集主机与交换机端口连接关系</div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div><!-- end ngRepeat: group in toolListGroup -->
+                <div class="tool-group ng-scope" ng-repeat="group in toolListGroup">
+                    <h5 class="tool-group-name ng-binding">AWS</h5>
+                    <div class="tool-list">
+                        <div class="tool-list-inner">
+                            <!-- ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/74debb4356daccc5b56fbf3112b730fb">
+                                    <div class="am-icon-btn default am-icon-site" ng-class="::row.style">
+                                        <i  class="ng-isolate-scope fa fa-wrench"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">修改主机提供商</div>
+                                </a>
+                            </div><!-- end ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/9fbf583a5d87611c7ac34f8064f5a518">
+                                    <div class="am-icon-btn default am-icon-site" ng-class="::row.style">
+                                        <i class="ng-isolate-scope fa fa-wrench"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">创建aws主机</div>
+                                </a>
+                            </div><!-- end ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/3883bec8aeb3acb6ad90c1af6d51d982">
+                                    <div class="am-icon-btn default am-icon-site" ng-class="::row.style">
+                                        <i class="ng-isolate-scope fa fa-wrench"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">删除aws主机</div>
+                                </a>
+                            </div><!-- end ngRepeat: row in ::group.list -->
+                        </div>
+                    </div>
+                </div><!-- end ngRepeat: group in toolListGroup -->
+                <div class="tool-group ng-scope" ng-repeat="group in toolListGroup">
+                    <h5 class="tool-group-name ng-binding">CMDB自动发现</h5>
+                    <div class="tool-list">
+                        <div class="tool-list-inner">
+                            <!-- ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/48952acabf0d76e801ef7e53d407ca69">
+                                    <div class="am-icon-btn default am-icon-site" ng-class="::row.style">
+                                        <i  class="ng-isolate-scope fa fa-wrench"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">IP-MAC信息采集</div>
+                                </a>
+                            </div><!-- end ngRepeat: row in ::group.list -->
+                        </div>
+                    </div>
+                </div><!-- end ngRepeat: group in toolListGroup -->
+                <div class="tool-group ng-scope" ng-repeat="group in toolListGroup">
+                    <h5 class="tool-group-name ng-binding">CPU故障自愈</h5>
+                    <div class="tool-list">
+                        <div class="tool-list-inner">
+                            <!-- ngRepeat: row in ::group.list -->
+                            <div class="tool-item ng-scope" ng-repeat="row in ::group.list">
+                                <a class="tool-item-inner" ui-sref="tools.tool.detail(row)"
+                                   href="tool/3f137dabdcd6ca40a4423c0cd891f7ae">
+                                    <div class="am-icon-btn default  am-icon-site" ng-class="::row.style">
+                                        <i  class="ng-isolate-scope fa fa-wrench"></i>
+                                    </div>
+                                    <div class="tool-name ng-binding">其它监控平台确认</div>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- auto replacement -->
+<div class="sidebar-footer">
+</div>
+
+
+</body>
+</html>

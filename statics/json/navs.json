@@ -2,7 +2,7 @@
 	"contentManagement": [
 		{
 			"title": "机器列表",
-			"icon": "icon-text",
+			"icon": "layui-icon-list",
 			"href": "cmdb/hostlist",
 			"spread": true,
 			"bind":"Ceshi"
@@ -24,9 +24,9 @@
 	],
 	"systemeSttings": [
 		{
-			"title": "系统基本参数",
+			"title": "后台首页",
 			"icon": "&#xe631;",
-			"href": "page/systemSetting/basicParameter.html",
+			"href": "adminapp/index",
 			"spread": false
 		},{
 			"title": "定时任务",
@@ -42,6 +42,19 @@
 			"title": "DjangoAdmin",
 			"icon": "&#xe857;",
 			"href": "page/systemSetting/icons.html",
+			"spread": false
+		}
+	],
+  	"workingtables": [
+		{
+			"title": "工具列表",
+			"icon": "&#xe631",
+			"href": "working/index",
+			"spread": false
+		},{
+			"title": "Ansbile",
+			"icon": "icon-mokuai",
+			"href": "page/doc/bodyTabDoc.html",
 			"spread": false
 		}
 	],

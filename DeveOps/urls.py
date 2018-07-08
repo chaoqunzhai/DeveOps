@@ -18,17 +18,21 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from DeveOps.views import *
 
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 
     url(r'^$',index,name='index'),
+
 
     url(r'^login',Sinlogin,name="login"),
 
     url(r'^logout',Sinlogout,name="logout"),
 
     url(r'^cmdb/',include("cmdb.urls")),
+
+    url(r'^adminapp/',include("adminApp.urls")),
+
+    url(r'^working/',include("working.urls")),
 
     url(r'^v1/assets/',include("cmdb.api_urls"))
 

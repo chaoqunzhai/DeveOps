@@ -29,11 +29,16 @@ layui.use(['bodyTab','form','element','layer','jquery'],function(){
 				dataStr = data.systemeSttings;
 				//重新渲染左侧菜单
 				tab.render();
+
 			}else if(json == "seraphApi"){
                 dataStr = data.seraphApi;
                 //重新渲染左侧菜单
                 tab.render();
-            }
+            }else if(json == "workingtables"){
+				dataStr = data.workingtables;
+
+				tab.render();
+			}
 		})
 	}
 	//页面加载时判断左侧菜单是否显示

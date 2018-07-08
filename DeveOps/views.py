@@ -9,12 +9,12 @@ def index(request):
 
 def Sinlogin(request):
     code = {}
-
     sessionid = request.session.session_key
     if sessionid:
         if request.session.get('login', None):
             return redirect('/login')
     if request.method == "POST":
+        code = {"success": None}
         username = request.POST.get("username")
         password = request.POST.get("password")
 
@@ -23,13 +23,13 @@ def Sinlogin(request):
         if user:
             login(request, user)
             request.session['login'] = True
+            code["success"] = True
             return redirect(request.GET.get("next") or "/")
-        #            return redirect('/category/all/')
         else:
-            code = {"error": "用户名或者密码错误"}
+            # code = {"error": "用户名或者密码错误"}
+            code["success"] = False
 
-    return render(request, "base/login.html", locals())
-
+    return render(request, "base/login.html",locals())
 
 
 def Sinlogout(request):

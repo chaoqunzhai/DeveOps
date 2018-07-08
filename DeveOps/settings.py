@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'cmdb',
-
+    "adminApp",
+    "working"
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -77,15 +78,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'DeveOps.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
     'ENGINE': 'django.db.backends.mysql',
@@ -93,7 +86,7 @@ DATABASES = {
     'USER': 'root',
     'charset':'utf8',
     'PASSWORD': 'quanshi',
-    'HOST': '192.168.17.215',
+    'HOST': '127.0.0.1',
     'PORT': '3306',
     },
 }

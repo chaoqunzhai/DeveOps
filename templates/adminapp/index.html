@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <link href="{% static 'adminapp/css/global.css' %}" rel="stylesheet">
+    <link href="{% static 'adminapp/css/animate.css' %}" rel="stylesheet">
+    <link href="{% static 'adminapp/css/index.css' %}" rel="stylesheet">
+
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'layui/layui.js' %}"></script>
+    <script src="{% static 'adminapp/js/common.js' %}"></script>
+</head>
+<body>
+
+
+
+<div id="feature">
+    <div class="wrap">
+        <h2 class="reset">系统特色</h2>
+        <p class="reset summary">精心铸造网站管理系统“让您的代码，能省则省”</p>
+        <div class="item_con">
+            <ul class="grid">
+                <li>
+                    <div class="icon"><img src="{% static 'images/adminapp/icon3.png' %}" alt="权限管理"></div>
+                    <h4 class="reset">权限管理</h4>
+                    <p class="desc">后台操作权限，让你从权限繁琐业务中解放出来，你只需要专注于你自己的项目中</p>
+                </li>
+                <li>
+                    <div class="icon"><img src="{% static 'images/adminapp/icon1.png' %}" alt="内容管理"></div>
+                    <h4 class="reset">内容管理</h4>
+                    <p class="desc">9大栏目类型提供选择，完善的内容数据管理，前台已经Assign出大部分你需要的数据</p>
+                </li>
+                <li>
+                    <div class="icon"><img src="{% static 'images/adminapp/icon5.png' %}" alt="数据函数"></div>
+                    <h4 class="reset">数据函数</h4>
+                    <p class="desc">大部分的数据都准备了函数方便快速调用，不用自己手动去查询数据库</p>
+                </li>
+                <li>
+                    <div class="icon"><img src="{% static 'images/adminapp/icon4.png' %}" alt="模型创新"></div>
+                    <h4 class="reset">模型创新</h4>
+                    <p class="desc">模型关联、事件、验证进行创新，降低新手使用难度</p>
+                </li>
+                <li>
+                    <div class="icon"><img src="{% static 'images/adminapp/icon2.png' %}" alt="添删改查"></div>
+                    <h4 class="reset">添删改查</h4>
+                    <p class="desc">表单、列表、搜索配置后自动生成显示，让你从添删改查基础操作中解放出来</p>
+                </li>
+                <li>
+                    <div class="icon"><img src="{% static 'images/adminapp/icon6.png' %}" alt="模板能力"></div>
+                    <h4 class="reset">模板能力</h4>
+                    <p class="desc">多层次模板继承、16宽列表样式、3中翻页效果、自定义模板后台操作切换</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
