@@ -19,23 +19,46 @@ def nodelist(request):
              }
         callback.append(value)
     data = {'statuc': 200, 'value': callback}
+
     return JsonResponse(data)
 
 
 #/api/assets/v1/assets/?node_id
 class Assetlist(View):
+    #previous:上一页
+    #next:下一页
     def get(self, request, *args, **kwargs):
-        data = {
-            "id": '1',
-            "hostname": "ceshi",
-            "ip": "192.168.5.100",
-            "is_active": True,
-            "is_connective": True
+        node_id = request.GET.get("node_id")
+        show_current_asset = request.GET.get("show_current_asset","")
+        order = request.GET.get("order","")
+        search = request.GET.get("order","")
+        limit = request.GET.get("limit","")
+        offset = request.GET.get("offset", "")
 
-        }
-        a={"count":0,"next":None,"previous":None,"results":[]}
+        a = {"count": 0, "next": None, "previous": None, "results": []}
 
-        print("asset-list",request.GET.get("node_id"))
+        if node_id == "3ce04dc6-f013-4b6f-b0fe-429b664e98f7":
+
+            data = {
+                "id": '1',
+                "hostname": "ceshi",
+                "ip": "192.168.5.100",
+                "hardware": "00：",
+                "is_active":True,
+                "is_connective": True,
+                "nodes":[
+                    "473c8b1ad0484062b061d767032ff73a",
+                    "0116f2bb7836488d8322a5aeb5384788"
+                ]
+
+            }
+
+            a={"count":1,"next":None,"previous":None,"results":[data]}
+
+
+        print("asset-list",node_id)
+
+
         return JsonResponse(a)
 
 

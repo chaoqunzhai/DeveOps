@@ -7,7 +7,7 @@ from django.views.generic import View
 @site_login
 def hostlit(request):
 
-    print("hostlit",request.user.username)
+
 
     return render(request, "cmdb/index.html", locals())
 

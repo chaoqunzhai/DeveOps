@@ -2,7 +2,7 @@
 	"contentManagement": [
 		{
 			"title": "机器列表",
-			"icon": "layui-icon-list",
+			"icon": "layui-anim seraph icon-oschina",
 			"href": "cmdb/hostlist",
 			"spread": true,
 			"bind":"Ceshi"

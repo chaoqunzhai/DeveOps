@@ -41,12 +41,13 @@
         .layui-tab{
             margin:0
         }
+
     </style>
 
     {% include "base/utils_js.html" %}
 
 </head>
-<body class="childrenBody" style="background-color: #eee">
+<body class="childrenBody" style="background-color: #eee;overflow-y: scroll">
 
 
 <div class="alert alert-info help-message">
@@ -202,7 +203,7 @@
 
             columns: [
                 {data: "id"}, {data: "hostname"}, {data: "ip"},
-                {data: "is_active", orderable: false},
+                {data: "hardware", orderable: false},
                 {data: "is_connective", orderable: false}, {data: "id", orderable: false}
             ],
             op_html: $('#actions').html()
