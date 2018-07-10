@@ -2,9 +2,12 @@ from django.shortcuts import render, HttpResponse
 from django.views.generic import View
 from django.http import JsonResponse
 from cmdb.models.node import Node
+from utils.mongodb import MyMongoDB
 import json
-import uuid
+import uuid,re
 
+
+mongodb_conn = MyMongoDB()
 def nodelist(request):
 
     nodeall = Node.objects.all()
@@ -34,32 +37,31 @@ class Assetlist(View):
         search = request.GET.get("order","")
         limit = request.GET.get("limit","")
         offset = request.GET.get("offset", "")
+        print("Assetlist---!!",show_current_asset,order,search,limit,offset)
+        Callback = {"count": 200, "next": None, "previous": None, "results": []}
 
-        a = {"count": 0, "next": None, "previous": None, "results": []}
+        if node_id:
+            node_obj = Node.objects.get(id=node_id)
 
-        if node_id == "3ce04dc6-f013-4b6f-b0fe-429b664e98f7":
+            name = node_obj.full_value
+            query = "/".join(name.split("/")[1:])
+            if node_obj.key == "0":
+                a = {"count": 1, "next": None, "previous": None, "results": []}
 
-            data = {
-                "id": '1',
-                "hostname": "ceshi",
-                "ip": "192.168.5.100",
-                "hardware": "00：",
-                "is_active":True,
-                "is_connective": True,
-                "nodes":[
-                    "473c8b1ad0484062b061d767032ff73a",
-                    "0116f2bb7836488d8322a5aeb5384788"
-                ]
+                return JsonResponse(a)
 
-            }
+            elif node_obj.parent.name == "ROOT":
 
-            a={"count":1,"next":None,"previous":None,"results":[data]}
+                Callback["results"] = mongodb_conn.dbfind({"Subordinateservices": re.compile(query)})
 
+            else:
+
+
+                Callback["results"] = mongodb_conn.dbfind({"Subordinateservices":query})
 
         print("asset-list",node_id)
 
-
-        return JsonResponse(a)
+        return JsonResponse(Callback)
 
 
 class AssetUpdate(View):
@@ -74,7 +76,6 @@ class AssetUpdate(View):
 
 
 
-
 class NodeChildrenAdd(View):
 
     def post(self, request, *args, **kwargs):
@@ -83,9 +84,14 @@ class NodeChildrenAdd(View):
 
         nodeid_id = request.POST.get("nodeid")
         # print("NodeChildren->在次节点下创建目录",nodeid_id)
+
         if nodeid_id:
+
+
             this_obj = Node.objects.get(id=nodeid_id)
+
             this_obj.create_child("NodeNew")
+
             data = {"status": "success", "data": {"id": this_obj.id,
                                                   "value": "NodeNew",
                                                   "assets_amount":0}}
@@ -154,10 +160,15 @@ class NodeRename(View):
 
         body = json.loads(str(request.body, encoding="utf-8"))
 
-
+        print("body.get",body.get("value"))
         if body:
+            this_obj = Node.objects.get(id=body.get("id"))
+            if this_obj.key == "0":
+
+                return JsonResponse(data={"Error":"root"})
 
             Node.objects.filter(id=body.get("id")).update(value=body.get("value"))
+
         return JsonResponse(data)
 
     def get(self, request, *args, **kwargs):

@@ -46,8 +46,7 @@ class Node(models.Model):
         ancestor = [a.value for a in self.get_ancestor(with_self=True)]
         if self.is_root():
             return self.value
-        return ' / '.join(ancestor)
-
+        return '/'.join(ancestor)
     @property
     def level(self):
         return len(self.key.split(':'))

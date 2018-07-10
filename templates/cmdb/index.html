@@ -38,8 +38,9 @@
         .ztree {
             background-color: #f3f3f3;
         }
-        .layui-tab{
-            margin:0
+
+        .layui-tab {
+            margin: 0
         }
 
     </style>
@@ -83,7 +84,7 @@
                     <li>配置管理</li>
                 </ul>
 
-                <div class="layui-tab-content" >
+                <div class="layui-tab-content">
                     <div class="layui-tab-item layui-show">{% include "cmdb/_asset_node_info.html" %}</div>
                     <div class="layui-tab-item">{% include "cmdb/_asset_list_host.html" %}</div>
                     <div class="layui-tab-item">内容3</div>
@@ -127,6 +128,10 @@
 </div>
 <!-- 添加资产到节点/移动资产到节点-->
 {% include "cmdb/_asset_list_modal.html" %}
+<script src="/static/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="/static/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="/static/plugins/bootstrap-table/extensions/export/bootstrap-table-export.min.js"></script>
+<script src="/static/plugins/tableExport.jquery.plugin/tableExport.min.js"></script>
 
 
 <script>
@@ -167,51 +172,44 @@
 
 
     function initTable() {
-        var options = {
-            ele: $('#asset_list_table'),
-            columnDefs: [
-                {
-                    targets: 1, createdCell: function (td, cellData, rowData) {
-                        {% url 'assetdetail' as the_url  %}
-                        var detail_btn = '<a href="{{ the_url }}">' + cellData + '</a>';
-                        $(td).html(rowData.id);
-                    }
-                },
-                {
-                    targets: 3, createdCell: function (td, cellData, rowData) {
-                        $(td).html(rowData.hardware_info)
-                    }
-                },
-                {
-                    targets: 4, createdCell: function (td, cellData) {
-                        if (!cellData) {
-                            $(td).html('<i class="fa fa-times text-danger"></i>')
-                        } else {
-                            $(td).html('<i class="fa fa-check text-navy"></i>')
-                        }
-                    }
-                },
-                {
-                    targets: 5, createdCell: function (td, cellData, rowData) {
-                        var update_btn = '<a href="{% url "assetupdate" %}?cellData=' + cellData + 'class="btn btn-xs btn-info">更新</a>';
-                        var del_btn = '<a class="btn btn-xs btn-danger m-l-xs btn_asset_delete" data-uid=' + cellData + ">删除</a>";
-                        $(td).html(update_btn + del_btn)
-                    }
-                }
-            ],
-            ajax_url: '{% url "assetlist" %}',
+       var options = {
+           ele: $('#asset_list_table'),
+           columnDefs: [
 
-            columns: [
-                {data: "id"}, {data: "hostname"}, {data: "ip"},
-                {data: "hardware", orderable: false},
-                {data: "is_connective", orderable: false}, {data: "id", orderable: false}
-            ],
-            op_html: $('#actions').html()
-        };
-        asset_table = jumpserver.initServerSideDataTable(options);
+               {
+                   targets: 1, createdCell: function (td, cellData, rowData) {
+                       {% url 'assetdetail' as the_url  %}
+                       var detail_btn = '<a href="{{ the_url }}">' + cellData + '</a>';
+                       $(td).html(rowData.hostname);
+                   }
+               },
+               {
+                   targets: 3, createdCell: function (td, cellData, rowData) {
+                       $(td).html(rowData.hardware_info)
+                   }
+               },
+               {
+                   targets: 5, createdCell: function (td, cellData, rowData) {
+                       var update_btn = '<a href="{% url "assetupdate" %}?cellData=' + cellData + 'class="btn btn-xs btn-info">更新</a>';
+                       var del_btn = '<a class="btn btn-xs btn-danger m-l-xs btn_asset_delete" data-uid=' + cellData + ">删除</a>";
+                       $(td).html(update_btn + del_btn)
+                   }
+               }
+           ],
+           ajax_url: '{% url "assetlist" %}',
 
-        return asset_table
+           columns: [
+               {data: "id"}, {data: "hostname"}, {data: "management_ip"},
+               {data: "server_ip"},
+               {data: "admin_name"}, {data: "id", orderable: false}
+           ],
+           op_html: $('#actions').html()
+       };
+       asset_table = jumpserver.initServerSideDataTable(options);
+
+       return asset_table
     }
+
 
     function initTree() {
         var setting = {

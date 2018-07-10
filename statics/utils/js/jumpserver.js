@@ -424,7 +424,8 @@ jumpserver.initServerSideDataTable = function (options) {
                 last:       "»"
             }
         },
-        lengthMenu: [[10, 15, 25, 50], [10, 15, 25, 50]]
+        lengthMenu: [[10, 15, 25, 50], [10, 15, 25, 50]],
+
     });
     table.selected = [];
     table.on('select', function(e, dt, type, indexes) {
